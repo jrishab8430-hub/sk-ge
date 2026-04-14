@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SK Gems — Wholesale Gemstones, Agra</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --deep: #0A0806;
+    --dark: #120F0A;
+    --card: #1A1510;
+    --border: rgba(201,168,76,0.2);
+    --text: #E8E0D0;
+    --muted: #8A7D6A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--deep);
+    color: var(--text);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(10,8,6,0.95), transparent);
+    backdrop-filter: blur(2px);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--text); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold) !important;
+    padding: 8px 20px;
+    transition: all 0.3s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold) !important;
+    color: var(--deep) !important;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 48px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(139,90,30,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(60,20,80,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 50% 0%, rgba(201,168,76,0.06) 0%, transparent 50%);
+  }
+
+  .gem-decor {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 420px;
+    height: 420px;
+    opacity: 0.12;
+  }
+
+  .gem-decor svg { width: 100%; height: 100%; }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 620px;
+  }
+
+  .hero-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-label::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-weight: 300;
+    line-height: 1.05;
+    margin-bottom: 28px;
+    animation: fadeUp 1s ease 0.2s both;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 460px;
+    margin-bottom: 48px;
+    animation: fadeUp 1s ease 0.4s both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    animation: fadeUp 1s ease 0.6s both;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--deep);
+    padding: 14px 32px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201,168,76,0.3);
+  }
+
+  .btn-ghost {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s;
+  }
+
+  .btn-ghost:hover { color: var(--gold); }
+
+  .hero-stats {
+    position: absolute;
+    bottom: 60px;
+    right: 48px;
+    display: flex;
+    gap: 48px;
+    animation: fadeUp 1s ease 0.8s both;
+  }
+
+  .stat {
+    text-align: right;
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    color: var(--gold);
+    font-weight: 300;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* DIVIDER */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 48px;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .divider-gem {
+    color: var(--gold);
+    font-size: 1.2rem;
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 48px; }
+
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  /* ABOUT */
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .about-text p {
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+  }
+
+  .about-visual {
+    position: relative;
+    height: 420px;
+  }
+
+  .about-card {
+    position: absolute;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 28px;
+  }
+
+  .about-card:nth-child(1) {
+    top: 0; left: 0;
+    width: 75%;
+    height: 65%;
+  }
+
+  .about-card:nth-child(2) {
+    bottom: 0; right: 0;
+    width: 60%;
+    height: 50%;
+    background: rgba(201,168,76,0.06);
+  }
+
+  .about-card-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .about-card-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.4;
+  }
+
+  /* PRODUCTS */
+  .products-section { background: var(--dark); }
+
+  .products-header {
+    max-width: 1200px;
+    margin: 0 auto 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .product-card {
+    background: var(--card);
+    padding: 40px 32px;
+    border: 1px solid transparent;
+    transition: all 0.4s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.05) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .product-card:hover {
+    border-color: var(--border);
+    transform: translateY(-4px);
+  }
+
+  .product-card:hover::before { opacity: 1; }
+
+  .product-gem {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+
+  .product-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .product-tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    display: inline-block;
+  }
+
+  /* WHY US */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    max-width: 1200px;
+    margin: 60px auto 0;
+    background: var(--border);
+  }
+
+  .why-item {
+    background: var(--deep);
+    padding: 40px 28px;
+  }
+
+  .why-icon {
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .why-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+
+  .why-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .contact-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  .contact-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .contact-icon {
+    color: var(--gold);
+    font-size: 1.1rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .contact-detail-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .contact-detail-value {
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .contact-form {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .form-input, .form-textarea {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 12px 16px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.3s;
+    resize: none;
+  }
+
+  .form-input:focus, .form-textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .form-input::placeholder, .form-textarea::placeholder {
+    color: var(--muted);
+    opacity: 0.5;
+  }
+
+  .whatsapp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #25D366;
+    color: white;
+    padding: 14px 24px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.3s;
+    margin-top: 8px;
+  }
+
+  .whatsapp-btn:hover {
+    background: #1db954;
+    transform: translateY(-2px);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 40px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  .footer-text {
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes shimmer {
+    0%, 100% { opacity: 0.12; }
+    50% { opacity: 0.2; }
+  }
+
+  .gem-decor { animation: shimmer 4s ease-in-out infinite; }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    section { padding: 70px 24px; }
+    .hero { padding: 0 24px; }
+    .hero-stats { right: 24px; gap: 24px; }
+    .about { grid-template-columns: 1fr; }
+    .about-visual { display: none; }
+    .products-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+    .divider { padding: 0 24px; }
+    /* ENHANCED UI/UX STYLES */
+    
+    /* 3D and Hover effects for cards */
+    .product-card, .about-card, .why-item {
+      transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s, border-color 0.4s !important;
+      transform-style: preserve-3d;
+      cursor: pointer;
+      border: 1px solid rgba(201,168,76,0.05);
+    }
+    .product-card:hover, .about-card:hover, .why-item:hover {
+      border-color: rgba(201,168,76,0.3);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6), 0 0 20px rgba(201,168,76,0.1);
+      z-index: 10;
+      transition-delay: 0s !important;
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(201,168,76,0.15), transparent 40%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .product-card:hover::before { opacity: 1; }
+
+    .product-card > * {
+      position: relative;
+      z-index: 2;
+      transform: translateZ(20px);
+      display: block;
+    }
+
+    /* Button Highlights & Ripples */
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: all 0.6s ease;
+      z-index: -1;
+    }
+    .btn-primary:hover::after {
+      left: 100%;
+    }
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.02);
+    }
+
+    .btn-ghost {
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .btn-ghost::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 0%; height: 1px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+    .btn-ghost:hover::after { width: 100%; }
+
+    /* Nav Blur enhancement */
+    nav {
+      transition: background 0.4s, padding 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(10, 8, 6, 0.98);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+      padding: 16px 48px;
+    }
+
+    /* Enhanced Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+      transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+      filter: blur(5px);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    /* Parallax classes for hero texts */
+    .hero-content > * {
+      transition: transform 0.1s ease-out;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">SK <span>Gems</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#collection">Collection</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact" class="nav-cta">Enquire Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="gem-decor">
+    <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="200,20 380,150 380,250 200,380 20,250 20,150" stroke="#C9A84C" stroke-width="1" fill="none"/>
+      <polygon points="200,60 340,160 340,240 200,340 60,240 60,160" stroke="#C9A84C" stroke-width="0.5" fill="none"/>
+      <polygon points="200,100 300,170 300,230 200,300 100,230 100,170" stroke="#C9A84C" stroke-width="0.5" fill="none"/>
+      <line x1="200" y1="20" x2="200" y2="380" stroke="#C9A84C" stroke-width="0.3"/>
+      <line x1="20" y1="150" x2="380" y2="250" stroke="#C9A84C" stroke-width="0.3"/>
+      <line x1="20" y1="250" x2="380" y2="150" stroke="#C9A84C" stroke-width="0.3"/>
+      <circle cx="200" cy="200" r="4" fill="#C9A84C"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-label">Wholesale Gemstones · Agra, India</div>
+    <h1 class="hero-title">
+      Rare Gems,<br>
+      <em>Timeless</em><br>
+      Excellence
+    </h1>
+    <p class="hero-sub">
+      From the heart of Agra — premium rubies, emeralds, sapphires, certified diamonds &amp; spiritual Rudraksha. Trusted by jewellers across India and worldwide.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Request Catalogue</a>
+      <a href="#collection" class="btn-ghost">View Collection →</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">Gem Varieties</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">25+</div>
+      <div class="stat-label">Years Legacy</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">50+</div>
+      <div class="stat-label">Countries Served</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div><div class="divider-gem">◆</div><div class="divider-line"></div></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about reveal">
+    <div class="about-text">
+      <div class="section-label">Our Story</div>
+      <h2 class="section-title">Agra's Finest <em>Gem House</em></h2>
+      <p>Nestled in the historic Namak Ki Mandi of Agra, SK Gems has been a trusted name in the gemstone trade for decades. We source directly from mines across India and internationally — ensuring authenticity, quality, and competitive wholesale pricing.</p>
+      <p>Whether you're a jeweller, retailer, astrologer, or collector — we offer a wide selection of certified precious and semi-precious stones tailored to your needs.</p>
+      <p style="color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic;">"Every gem tells a story. We help you find yours."</p>
+    </div>
+    <div class="about-visual">
+      <div class="about-card">
+        <div class="about-card-label">Our Promise</div>
+        <div class="about-card-text">100% Natural,<br>Ethically Sourced,<br>Certified Stones</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Location</div>
+        <div class="about-card-text">Namak Ki Mandi,<br>Agra, U.P.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div><div class="divider-gem">◆</div><div class="divider-line"></div></div>
+
+<!-- PRODUCTS -->
+<section id="collection" class="products-section">
+  <div class="products-header reveal">
+    <div>
+      <div class="section-label">Our Collection</div>
+      <h2 class="section-title">Precious &amp; <em>Semi-Precious</em></h2>
+    </div>
+    <p style="color: var(--muted); font-size: 0.85rem; max-width: 280px; text-align: right; line-height: 1.7;">All stones available in bulk wholesale quantities with certification on request.</p>
+  </div>
+
+  <div class="products-grid reveal">
+    <div class="product-card">
+      <span class="product-gem">🔴</span>
+      <div class="product-name">Ruby</div>
+      <p class="product-desc">Manik — the stone of passion and vitality. Available in Burmese, Thai, and Indian varieties. Natural, heated and unheated options.</p>
+      <span class="product-tag">Precious</span>
+    </div>
+    <div class="product-card">
+      <span class="product-gem">💚</span>
+      <div class="product-name">Emerald</div>
+      <p class="product-desc">Panna — vivid green gemstone of Mercury. Colombian, Zambian, and Brazilian origins. Wholesale lots available.</p>
+      <span class="product-tag">Precious</span>
+    </div>
+    <div class="product-card">
+      <span class="product-gem">💙</span>
+      <div class="product-name">Blue Sapphire</div>
+      <p class="product-desc">Neelam — the powerful Saturn stone. Ceylon, Bangkok, and Kashmir qualities. Certified stones available.</p>
+      <span class="product-tag">Precious</span>
+    </div>
+    <div class="product-card">
+      <span class="product-gem">💎</span>
+      <div class="product-name">Certified Diamonds</div>
+      <p class="product-desc">GIA/IGI certified diamonds in all cuts and clarity grades. Competitive wholesale pricing for jewellers and retailers.</p>
+      <span class="product-tag">Precious</span>
+    </div>
+    <div class="product-card">
+      <span class="product-gem">🟣</span>
+      <div class="product-name">Semi-Precious Stones</div>
+      <p class="product-desc">Amethyst, citrine, garnet, turquoise, moonstone, opal, and more — wide variety for all purposes and budgets.</p>
+      <span class="product-tag">Semi-Precious</span>
+    </div>
+    <div class="product-card">
+      <span class="product-gem">📿</span>
+      <div class="product-name">Rudraksha</div>
+      <p class="product-desc">Authentic Nepali and Indonesian Rudraksha beads — 1 mukhi to 21 mukhi. Certified and energised. Wholesale available.</p>
+      <span class="product-tag">Spiritual</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div><div class="divider-gem">◆</div><div class="divider-line"></div></div>
+
+<!-- WHY US -->
+<section id="why">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <div class="reveal" style="text-align: center; margin-bottom: 20px;">
+      <div class="section-label" style="justify-content: center;">Why Choose Us</div>
+      <h2 class="section-title" style="text-align: center;">The SK Gems <em>Difference</em></h2>
+    </div>
+    <div class="why-grid reveal">
+      <div class="why-item">
+        <span class="why-icon">🏆</span>
+        <div class="why-title">Decades of Trust</div>
+        <p class="why-desc">Serving jewellers, retailers, and collectors for over 25 years from the heart of Agra.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-icon">✅</span>
+        <div class="why-title">Certified Quality</div>
+        <p class="why-desc">Lab certificates available on request. All stones are genuine and ethically sourced.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-icon">🌍</span>
+        <div class="why-title">Global Shipping</div>
+        <p class="why-desc">We ship worldwide — India, USA, UK, UAE, Europe and beyond. Secure and insured packaging.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-icon">💰</span>
+        <div class="why-title">Wholesale Pricing</div>
+        <p class="why-desc">Direct from source pricing. Best rates for bulk orders, resellers, and regular buyers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="contact-inner">
+    <div class="reveal">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Request a <em>Quote</em></h2>
+      <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.8; margin-top: 12px;">
+        Looking for specific gemstones? Need wholesale pricing? We're happy to help. Reach out with your requirements and we'll get back to you promptly.
+      </p>
+      <div class="contact-info-block">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-detail-label">Address</div>
+            <div class="contact-detail-value">SK Gems, Namak Ki Mandi,<br>Agra, Uttar Pradesh, India</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div>
+            <div class="contact-detail-label">WhatsApp / Call</div>
+            <div class="contact-detail-value">+91 XXXXX XXXXX</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-detail-label">Email</div>
+            <div class="contact-detail-value">info@skgems.in</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <div class="contact-detail-label">Business Hours</div>
+            <div class="contact-detail-value">Mon – Sat: 10:00 AM – 7:00 PM IST</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="section-label">Send Enquiry</div>
+      <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; margin-bottom: 8px;">Tell us what<br><em>you need</em></h3>
+      <div class="contact-form">
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input type="text" class="form-input" placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone / Email</label>
+          <input type="text" class="form-input" placeholder="Contact details">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Gemstone Required</label>
+          <input type="text" class="form-input" placeholder="e.g. Ruby 5 carats, Blue Sapphire...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" rows="3" placeholder="Your requirements, quantity, budget..."></textarea>
+        </div>
+        <a href="https://wa.me/91XXXXXXXXXX?text=Hello%20SK%20Gems!%20I%20am%20interested%20in%20your%20gemstones." class="whatsapp-btn" target="_blank">
+          💬 Chat on WhatsApp
+        </a>
+        <button onclick="alert('Thank you! We will contact you shortly.')" class="btn-primary" style="text-align: center; border: none; cursor: pointer; width: 100%;">Send Enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">SK Gems</div>
+  <div class="footer-text">Namak Ki Mandi, Agra · Wholesale Gemstones Since Decades</div>
+  <div class="footer-text">© 2025 SK Gems. All rights reserved.</div>
+</footer>
+
+<script>
+  // Enhanced Scroll reveal with blur fading
+  const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Dynamic Nav Background on Scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+  // 3D Tilt Effect for interaction cards
+  const cards = document.querySelectorAll('.product-card, .about-card, .why-item');
+  cards.forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      const tiltX = (y / rect.height) * -10; // Max 10deg tilt
+      const tiltY = (x / rect.width) * 10;
+      
+      card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.02, 1.02, 1.02)`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    });
+  });
+
+  // Mouse Follow Glow Effect on product cards
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
+
+  // Smooth Parallax on Hero section
+  const heroGem = document.querySelector('.gem-decor');
+  const heroLines = document.querySelectorAll('.hero-content > *');
+  document.addEventListener('mousemove', e => {
+    const x = (window.innerWidth / 2 - e.clientX);
+    const y = (window.innerHeight / 2 - e.clientY);
+    
+    if(heroGem) {
+      heroGem.style.transform = `translateY(-50%) translate(${x * 0.05}px, ${y * 0.05}px)`;
+    }
+    
+    heroLines.forEach((line, index) => {
+      const factor = (index + 1) * 0.01;
+      line.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+    });
+  });
+</script>
+
+</body>
+</html>
